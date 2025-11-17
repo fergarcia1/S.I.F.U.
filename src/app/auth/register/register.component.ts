@@ -48,8 +48,8 @@ export class RegisterComponent {
     );
   }
 
-  register() { //SUBMIT
-    const { username, password } = this.form.value;
+  register() { //"SUBMIT"
+    const { username, password } = this.form.value; 
 
     this.auth.register(username, password).subscribe({
       next: () => {

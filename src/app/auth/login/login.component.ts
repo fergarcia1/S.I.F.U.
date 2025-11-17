@@ -20,9 +20,14 @@ export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
   onSubmit() {
+    if (!this.username || !this.password) { // solo continuo con el login si tengo ambos campos
+      this.error = true;
+      return; 
+    }
+    
     this.auth.login(this.username, this.password).subscribe(res => {
       if (res) {
-        this.router.navigate(['/menu']); // o '/dashboard'
+        this.router.navigate(['/menu']); 
       } else {
         this.error = true;
       }

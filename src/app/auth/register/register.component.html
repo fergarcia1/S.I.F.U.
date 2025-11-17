@@ -3,7 +3,7 @@
 <form [formGroup]="form" (ngSubmit)="register()">
 
   <label>Usuario</label>
-  <input type="text" formControlName="username">
+  <input type="text" formControlName="username" placeholder="Usuario">
   
   @if (form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)) {
     <div style="color: red;">
@@ -30,7 +30,7 @@
 
 
   <label>Contraseña</label>
-  <input type="password" formControlName="password">
+  <input type="password" formControlName="password" placeholder="Contraseña">
 
   @if (form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)) {
     <div style="color: red;">
