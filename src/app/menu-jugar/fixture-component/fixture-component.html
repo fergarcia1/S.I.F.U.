@@ -1,1 +1,16 @@
-<p>fixture-component works!</p>
+<nav class="game-navbar">
+  <div class="nav-brand">
+    <span>S.I.F.U.</span>
+  </div>
+
+  <button class="nav-btn back-btn" (click)="goBack()">
+        &larr; Volver
+    </button>
+
+  <div class="nav-links">
+    <a [routerLink]="['/inicio', teamId]">Inicio</a>
+
+    <a [routerLink]="['/plantilla', teamId]">Plantilla</a>
+
+    <a [routerLink]="['/fixture', teamId]" class="active">Fixture</a>
+  </div>

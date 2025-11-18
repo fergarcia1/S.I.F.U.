@@ -1,0 +1,59 @@
+.game-navbar {
+  background-color: #15291f; /* Un verde aun mas oscuro para la barra */
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  border-bottom: 2px solid #cddc39;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.nav-btn:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-brand span {
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #cddc39;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  background-color: rgba(205, 220, 57, 0.1);
+  color: #cddc39;
+}
+
+.nav-links a.active {
+  background-color: #cddc39;
+  color: #15291f;
+  font-weight: bold;
+}

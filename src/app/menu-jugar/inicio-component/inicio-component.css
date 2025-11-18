@@ -9,6 +9,31 @@
   border-bottom: 2px solid #cddc39; /* Línea lima decorativa */
 }
 
+.logout-btn:hover {
+  color: #ff8a80; 
+  background-color: rgba(255, 255, 255, 0.05); 
+}
+
+.logout-btn {
+  background-color: transparent; 
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.6); 
+  font-size: 0.9rem;
+  font-weight: 500; 
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* transcision suave */
+  
+  /* Para alinear si decides ponerle un ícono después */
+  display: flex;
+  align-items: center; 
+}
+
+.nav-spacer {
+  flex-grow: 1; 
+}
+
 .nav-brand span {
   font-weight: 900;
   font-size: 1.2rem;

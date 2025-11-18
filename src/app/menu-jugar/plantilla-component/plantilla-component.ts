@@ -1,12 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { TeamsService } from '../../equipos/teams-service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 import { Teams } from '../../models/teams';
 import { Player } from '../../models/player';
 
 @Component({
   selector: 'app-plantilla-component',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './plantilla-component.html',
   styleUrl: './plantilla-component.css',
 })
@@ -17,17 +18,14 @@ export class PlantillaComponent {
 
   protected readonly teamId = Number(this.route.snapshot.paramMap.get('id'));
 
-  // 1️⃣ WritableSignal (sí permite update/set)
   protected readonly teamSource = signal<Teams | undefined>(undefined);
+  private readonly location = inject(Location);
 
   constructor() {
-    // 2️⃣ Cargar equipo en el signal
     this.service.getTeamById(this.teamId).subscribe(team => {
       this.teamSource.set(team);
     });
   }
-
-  // 3️⃣ Computeds de lectura
   public readonly team = computed(() => this.teamSource());
   public readonly squad = computed(() => this.teamSource()?.squad ?? []);
   public readonly isLoading = computed(() => this.teamSource() === undefined);
@@ -37,7 +35,6 @@ export class PlantillaComponent {
 
   jugadorSeleccionado: Player | null = null;
 
-  // 4️⃣ Intercambio que SÍ actualiza los signals
   cambiarJugador(titular: Player, suplente: Player) {
     this.teamSource.update(team => {
       if (!team) return team;
@@ -53,5 +50,9 @@ export class PlantillaComponent {
 
     this.jugadorSeleccionado = null;
   }
+   goBack() {
+    this.location.back();
+  }
 }
+
 

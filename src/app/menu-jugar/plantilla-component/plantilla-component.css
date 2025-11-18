@@ -1,22 +1,228 @@
-.plantel-container {
+.game-navbar {
+  background-color: #15291f; /* Un verde aun mas oscuro para la barra */
+  padding: 1rem 2rem;
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  border-bottom: 2px solid #cddc39; /* Línea lima decorativa */
 }
 
-.columna {
-  flex: 1;
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  font-weight: bold;
 }
 
-.player-card {
-  margin-bottom: 10px;
+.nav-btn:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-brand span {
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #cddc39;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  background-color: rgba(205, 220, 57, 0.1);
+  color: #cddc39;
+}
+
+.nav-links a.active {
+  background-color: #cddc39;
+  color: #15291f;
+  font-weight: bold;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  animation: fadeIn 0.5s ease-out;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #cddc39; /* Verde Lima */
+}
+
+/* Layout de dos columnas */
+.plantel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% - 50% */
+  gap: 2rem;
+}
+
+.columna h3 {
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  border-bottom: 3px solid #cddc39;
+  margin-bottom: 1.5rem;
+}
+
+/* --- DISEÑO DE LA CARTA DE JUGADOR --- */
+.player-card {
+  background: linear-gradient(145deg, #234232, #1a3326); /* Degradado sutil */
+  border: 1px solid #365e47;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border-color: #cddc39;
+}
+
+/* Estado: Jugador Seleccionado (Titular) */
+.player-card.selected {
+  background: #cddc39;
+  color: #15291f;
+  border-color: white;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(205, 220, 57, 0.5);
+}
+
+/* Estado: Modo Cambio Activo (Suplentes) */
+.player-card.swap-mode {
+  border: 2px dashed #cddc39;
+  background: rgba(205, 220, 57, 0.1);
+  cursor: pointer;
+}
+
+/* --- DETALLES DENTRO DE LA CARTA --- */
+.card-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rating-badge {
+  background-color: #15291f;
+  color: #cddc39;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50%; /* Círculo */
+  border: 2px solid #365e47;
+}
+
+/* Si la carta está seleccionada, invertimos colores del badge */
+.player-card.selected .rating-badge {
+  background-color: #15291f;
+  color: white;
+}
+
+.details h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.details span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* --- BOTONES DE ACCIÓN --- */
+.btn-action {
+  padding: 8px 12px;
   border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.8rem;
 }
 
-.titular {
-  border: 2px solid green;
+/* Botón Seleccionar (Titular) */
+.btn-select {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.suplente {
-  border: 2px solid orange;
+.btn-select:hover {
+  background-color: white;
+  color: #15291f;
+}
+
+/* Botón Cancelar (Cuando ya está seleccionado) */
+.btn-cancel {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+/* Botón Intercambiar (Suplente) */
+.btn-swap {
+  background-color: #cddc39;
+  color: #15291f;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-swap:hover {
+  background-color: #fff;
+}
+
+.btn-swap:disabled {
+  background-color: transparent;
+  color: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .plantel-container {
+    grid-template-columns: 1fr; /* Una sola columna */
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
