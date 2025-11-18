@@ -1,6 +1,22 @@
-<app-navbar [showBack]="false" [showLogout]="true"></app-navbar>
+<app-navbar [showBack]="false" [showLogout]="true" (logout)="logout()"></app-navbar>
 
-<h1>Menú Principal</h1>
+<div class="menu-container">
+  
+  @if (user) {
+    <h1 class="welcome-title">Bienvenido, {{ user.username }}</h1>
+  } 
 
-<button routerLink="/listaTeams">Nueva partida</button>
-<button routerLink="/">Cargar Partida</button>
+  <div class="menu-options">
+
+    <a routerLink="/listaTeams" class="menu-card">
+      <h2>Nueva Partida</h2>
+      <p>Comienza una nueva carrera como Director Técnico.</p>
+    </a>
+    
+    <a routerLink="/" class="menu-card menu-card-disabled">
+      <h2>Cargar Partida</h2>
+      <p>Continúa tu última partida guardada (Próximamente).</p>
+    </a>
+
+  </div>
+</div>

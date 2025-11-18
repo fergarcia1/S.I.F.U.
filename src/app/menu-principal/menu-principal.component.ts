@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../auth/auth-service';
-import { Router,RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { Users } from '../models/users';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [NavbarComponent,RouterLink],
+  imports: [NavbarComponent, RouterLink],
   templateUrl: './menu-principal.component.html',
   styleUrls: ['./menu-principal.component.css']
 })
 export class MenuComponent {
+  private auth = inject(AuthService);
+  private router = inject(Router);
 
+  user: Users | null = null;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor() {
+    // Obtenemos el usuario desde el servicio al cargar el componente
+    this.user = this.auth.getUser();
+  }
 
   logout() {
     this.auth.logout();

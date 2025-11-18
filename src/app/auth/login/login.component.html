@@ -1,27 +1,42 @@
-
 <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-  <input 
-    type="text" 
-    placeholder="Usuario" 
-    [(ngModel)]="username" 
-    name="username"
-    required
-  >
   
+  <h2>S.I.F.U Login</h2>
+  
+  <div class="input-group">
+    <label for="username" class="sr-only">Usuario</label>
+    <input 
+      id="username"
+      type="text" 
+      placeholder="Usuario" 
+      [(ngModel)]="username" 
+      name="username"
+      required
+    >
+  </div>
 
-  <input 
-    type="password" 
-    placeholder="Contraseña" 
-    [(ngModel)]="password" 
-    name="password"
-    required
-  >
-
-  <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
-  <button type="button"  (click)="goToRegister()">No tienes una cuenta? Registrate</button>
-
+  <div class="input-group">
+    <label for="password" class="sr-only">Contraseña</label>
+    <input 
+      id="password"
+      type="password" 
+      placeholder="Contraseña" 
+      [(ngModel)]="password" 
+      name="password"
+      required
+    >
+  </div>
 
   @if (error) {
     <p class="error">Usuario o contraseña incorrectos</p>
   }
+
+  <div class="button-group">
+    <button type="submit" [disabled]="!loginForm.valid" class="btn-primary">
+      Entrar
+    </button>
+    <button type="button" (click)="goToRegister()" class="btn-secondary">
+      No tienes una cuenta? Registrate
+    </button>
+  </div>
+
 </form>

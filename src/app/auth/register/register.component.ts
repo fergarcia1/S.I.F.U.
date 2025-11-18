@@ -39,6 +39,10 @@ export class RegisterComponent {
       ]]
     });
   }
+  
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
 
   usernameExisteValidator(control: any) { //VALIDACION CREADA POR NOSOTROS PARA NO REPETIR USUARIOS
     return this.auth.checkUserExists(control.value).pipe(
