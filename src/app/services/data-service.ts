@@ -5,12 +5,19 @@ import { Player } from '../models/player';
 import { initialDB } from './mock-db';
 
 // La variable global que simula la Base de Datos
-let db: Teams[] = initialDB; 
+let db: Teams[] = initialDB;
+let allPlayers: Player[] = db.flatMap(t => t.squad);
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+
+getPlayerById(id: number): Observable<Player | undefined> {
+  const allPlayers = db.flatMap(team => team.squad);
+  const player = allPlayers.find(p => p.id === id);
+  return of(player);
+}
 
   // Genera un ID único para el nuevo equipo
   private generateUniqueTeamId(): number {

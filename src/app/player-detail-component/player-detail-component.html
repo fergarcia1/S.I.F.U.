@@ -1,0 +1,13 @@
+<div *ngIf="player">
+  <h2>{{ player.name }}</h2>
+  <p>Posición: {{ player.position }}</p>
+  <p>Rating: {{ player.rating }}</p>
+
+  <div *ngIf="team">
+    <h3>Equipo: {{ team.name }}</h3>
+  </div>
+</div>
+
+<div *ngIf="!player">
+  <p>Jugador no encontrado.</p>
+</div>
