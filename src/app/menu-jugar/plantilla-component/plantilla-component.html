@@ -1,0 +1,59 @@
+@if (isLoading()) {
+  <p>Cargando plantel...</p>
+} @else if (team(); as currentTeam) {
+
+  <h2>Plantel de: {{ currentTeam.name }} ({{ currentTeam.shortName }})</h2>
+
+  <div class="plantel-container">
+    
+    <!-- COLUMNA TITULARES -->
+    <div class="columna">
+      <h3>Titulares ({{ titulares().length }}/11)</h3>
+
+      @for (player of titulares(); track player.id) {
+        <fieldset class="player-card titular">
+          <strong>{{ player.name }}</strong> 
+          <p>Posición: {{ player.position }}</p>
+          <p>Valoración: {{ player.rating }}</p>
+
+          <button (click)="jugadorSeleccionado = player">
+            Seleccionar para cambio
+          </button>
+
+          @if (jugadorSeleccionado && jugadorSeleccionado.id === player.id) {
+            <p>Jugador elegido para cambiar</p>
+          }
+        </fieldset>
+      } @empty {
+        <p>No hay titulares.</p>
+      }
+    </div>
+
+    <!-- COLUMNA SUPLENTES -->
+    <div class="columna">
+      <h3>Suplentes</h3>
+
+      @for (player of suplentes(); track player.id) {
+        <fieldset class="player-card suplente">
+          <strong>{{ player.name }}</strong> 
+          <p>Posición: {{ player.position }}</p>
+          <p>Valoración: {{ player.rating }}</p>
+
+          <button 
+            [disabled]="!jugadorSeleccionado"
+            (click)="cambiarJugador(jugadorSeleccionado!, player)">
+            Entrar por {{ jugadorSeleccionado?.name || '...' }}
+          </button>
+        </fieldset>
+      } @empty {
+        <p>No hay suplentes.</p>
+      }
+    </div>
+
+  </div>
+
+} @else {
+  <p>No se pudo cargar el equipo.</p>
+}
+
+
