@@ -9,7 +9,6 @@ import { RegisterComponent } from './auth/register/register.component';
 export const routes: Routes = [
     {path: 'listaTeams', component: TeamsSelectionComponent},
     {path: 'listaTeams/:id', component: PlantelComponent},
-    {path: '**', component: TeamsSelectionComponent},
     
   {
     path: 'login',
