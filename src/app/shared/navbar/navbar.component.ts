@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../../auth/auth-service';
 
@@ -28,4 +28,5 @@ export class NavbarComponent {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
+
 }
