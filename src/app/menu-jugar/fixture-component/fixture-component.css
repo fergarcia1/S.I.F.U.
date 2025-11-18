@@ -56,31 +56,24 @@
 
 /* --- BOTÓN VOLVER ESTILIZADO --- */
 .btn-volver {
-  /* 1. Reseteo y Estructura */
   background-color: transparent; 
-  border: 2px solid rgba(205, 220, 57, 0.3); /* Borde sutil color lima */
-  border-radius: 50px; /* Bordes totalmente redondos (píldora) */
+  border: 2px solid rgba(205, 220, 57, 0.3); 
+  border-radius: 50px; 
   padding: 8px 20px;
-  
-  /* 2. Tipografía y Color */
-  color: #cddc39; /* Tu color principal */
+  color: #cddc39; 
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
-  /* 3. Alineación del icono */
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  
-  /* 4. Transiciones suaves */
   transition: all 0.3s ease;
 }
 
 .arrow {
-  font-size: 1.2rem; /* Flecha un poco más grande */
+  font-size: 1.2rem;
   line-height: 1;
   transition: transform 0.3s ease;
 }
