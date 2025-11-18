@@ -1,4 +1,6 @@
-<app-navbar [showBack]="false" [showLogout]="true" (logout)="logout()"></app-navbar>
+<header>
+  <a (click)="logout()">Cerrar Sesión</a>
+</header>
 
 <div class="menu-container">
   
@@ -15,7 +17,7 @@
     
     <a routerLink="/" class="menu-card menu-card-disabled">
       <h2>Cargar Partida</h2>
-      <p>Continúa tu última partida guardada (Próximamente).</p>
+      <p>Continúa tus partidas guardadas (Próximamente).</p>
     </a>
 
   </div>

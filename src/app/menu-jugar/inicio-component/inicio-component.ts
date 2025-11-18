@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { TeamsService } from '../../equipos/teams-service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 

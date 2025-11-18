@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../auth/auth-service';
 import { Router, RouterLink } from '@angular/router';
-import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { Users } from '../models/users';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [NavbarComponent, RouterLink],
+  imports: [RouterLink],
   templateUrl: './menu-principal.component.html',
   styleUrls: ['./menu-principal.component.css']
 })

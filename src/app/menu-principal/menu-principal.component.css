@@ -3,6 +3,24 @@
   width: 100%;
 }
 
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+header a {
+  cursor: pointer; 
+  color: rgba(255, 255, 255, 0.7); 
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+header a:hover {
+  color: #80b3e2; 
+  text-decoration: underline;
+}
+
 .menu-container {
   max-width: 900px;
   margin: 0 auto; 

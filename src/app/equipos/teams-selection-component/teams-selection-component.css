@@ -1,0 +1,109 @@
+/* Contenedor de búsqueda */
+.search-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 2px solid #cddc39; /* Verde lima */
+    border-radius: 8px;
+    background-color: #f0f7f4;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 0 4px rgba(205, 220, 57, 0.3);
+}
+
+/* Lista de equipos */
+.teams-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Tarjeta de cada equipo (Fila) */
+.team-card {
+    background-color: #f0f7f4; /* Fondo claro */
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #cddc39; /* Borde decorativo a la izquierda */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.team-card:hover {
+    transform: translateX(5px); /* Pequeño movimiento al pasar el mouse */
+}
+
+/* Información del texto */
+.team-info {
+    font-family: 'Roboto', sans-serif;
+    color: #1e392a;
+}
+
+.team-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.team-short {
+    color: #555;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Botones */
+.team-actions {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.btn-primary {
+    background-color: #1e392a; /* Verde oscuro */
+    color: white;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #1e392a;
+    color: #1e392a;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Mensajes */
+.loading-msg, .no-results {
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
