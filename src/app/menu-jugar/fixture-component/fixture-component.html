@@ -1,1 +1,42 @@
-<p>fixture-component works!</p>
+<h2>Fixture del Torneo</h2>
+
+<div class="fixture-container">
+  
+  @for (fecha of fixtureByMatchday(); track fecha.matchday) {
+
+    <div class="matchday-card">
+      <h3>Fecha {{ fecha.matchday }}</h3>
+
+    
+      <div class="matches">
+        @for (match of fecha.games; track match.id) {
+
+          <div class="match-box" [class.played]="match.played">
+            
+            <div class="team">
+              <span>{{ getTeamName(match.homeTeamId) }}</span>
+            </div>
+
+            <div class="score">
+              @if (match.played) {
+                <strong>{{ match.homeGoals }} - {{ match.awayGoals }}</strong>
+              } @else {
+                <span>vs</span>
+              }
+            </div>
+
+            <div class="team">
+              <span>{{ getTeamName(match.awayTeamId) }}</span>
+            </div>
+
+          </div>
+
+        } @empty {
+          <p>No hay partidos.</p>
+        }
+      </div>
+    </div>
+  }
+
+</div>
+

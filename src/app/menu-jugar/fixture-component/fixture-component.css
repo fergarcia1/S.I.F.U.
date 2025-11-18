@@ -1,0 +1,43 @@
+.fixture-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.matchday-card {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f3f3f3;
+}
+
+.matches {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match-box {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.match-box.played {
+  background: #d1ffd1;
+  border-color: #4caf50;
+}
+
+.team {
+  width: 40%;
+  text-align: center;
+}
+
+.score {
+  width: 20%;
+  text-align: center;
+  font-size: 18px;
+}
