@@ -23,6 +23,18 @@
       "username": "aDN",
       "password": "1234a$",
       "role": "player"
+    },
+    {
+      "id": 1763437408123,
+      "username": "TEST45",
+      "password": "123456$",
+      "role": "player"
+    },
+    {
+      "id": 1763440192782,
+      "username": "test56",
+      "password": "123456%",
+      "role": "player"
     }
   ],
   "saves": [],
@@ -5820,5 +5832,4 @@
       ]
     }
   ]
-  
 }
