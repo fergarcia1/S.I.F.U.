@@ -40,6 +40,9 @@ export class PlantillaComponent {
   // mostrar errores de tactica
   errorMessage = signal<string | null>(null);
 
+  protected readonly cardState = new Map<number, { yellow: number; red: boolean }>();
+
+
   //signals para formacion
   currentFormation = computed(() => {
     const df = this.titulares().filter(p => p.position === 'DF').length;
@@ -168,6 +171,8 @@ private esFormacionValida(titularSaliente: Player, suplenteEntrante: Player): bo
     imgElement.src = '/logos/default.png'; 
   }
 
+
+  
 }
 
 

@@ -178,18 +178,27 @@ export class GameStateService {
     return this.teams().find(t => t.id === teamId);
   }
 
-  updateTeam(updatedTeam: Teams) {
+ updateTeam(updatedTeam: Teams) {
   const newTeams = this.teams().map(team => {
     if (team.id !== updatedTeam.id) return team;
 
-    return {
-      ...team,
-      squad: updatedTeam.squad  // ⬅ solo reemplazar el squad
-    };
+    const newSquad = team.squad.map(originalPlayer => {
+      const updatedPlayer = updatedTeam.squad.find(p => p.id === originalPlayer.id);
+
+      if (!updatedPlayer) return originalPlayer;
+
+      return {
+        ...originalPlayer,          // ← conserva stats acumulados
+        isStarter: updatedPlayer.isStarter  // ← solo cambia el titular
+      };
+    });
+
+    return { ...team, squad: newSquad };
   });
 
   this.teams.set(newTeams);
 }
+
 
   
 
