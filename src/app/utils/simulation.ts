@@ -42,9 +42,9 @@ const CARD_RED_BY_POS = {
 
 const SECOND_YELLOW_BY_POS = {
   GK: 0.01,
-  DF: 0.06,
-  MF: 0.05,
-  FW: 0.03,
+  DF: 0.04,
+  MF: 0.025,
+  FW: 0.015,
 };
 
 /** ELEGIR JUGADOR */
