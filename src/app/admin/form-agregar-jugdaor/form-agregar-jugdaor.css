@@ -95,3 +95,12 @@ button[type="submit"]:disabled {
   background-color: #95a5a6;
   cursor: not-allowed;
 }
+
+.form-row {
+  display: flex;
+  gap: 15px; /* Espacio entre los dos inputs */
+}
+
+.half-width {
+  flex: 1; /* Cada uno ocupa el 50% */
+}

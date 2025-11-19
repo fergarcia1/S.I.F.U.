@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Teams } from '../models/teams';
 import { Player } from '../models/player';
-import { TeamsSelectionComponent } from './teams-selection-component/teams-selection-component'; 
+import { TeamsSelectionComponent } from './teams-selection-component/teams-selection-component';
 import { Observable, throwError } from 'rxjs';
 
 
@@ -31,7 +31,7 @@ export class TeamsService {
     )
   }
 
-addPlayerToTeam(teamId: number, newPlayer: Player): Observable<Teams> {
+  addPlayerToTeam(teamId: number, newPlayer: Player): Observable<Teams> {
     const teamUrl = `${this.url}/${teamId}`;
 
     // Usamos switchMap para encadenar operaciones dependientes
@@ -39,7 +39,7 @@ addPlayerToTeam(teamId: number, newPlayer: Player): Observable<Teams> {
       switchMap((team) => {
         // Agregamos el jugador al array localmente
         team.squad.push(newPlayer);
-        
+
         // Enviamos el equipo modificado al servidor
         return this.http.put<Teams>(teamUrl, team);
       }),
@@ -49,7 +49,32 @@ addPlayerToTeam(teamId: number, newPlayer: Player): Observable<Teams> {
       })
     );
   }
+
+  deletePlayerFromTeam(teamId: number, playerId: number): Observable<Teams> {
+    const teamUrl = `${this.url}/${teamId}`;
+
+    return this.http.get<Teams>(teamUrl).pipe(
+      switchMap((team) => {
+        // Filtramos el squad para quitar al jugador con ese ID
+        const updatedSquad = team.squad.filter(p => p.id !== playerId);
+        
+
+        // Actualizamos el objeto team
+        team.squad = updatedSquad;
+
+        // Guardamos los cambios en el servidor
+        return this.http.put<Teams>(teamUrl, team);
+      }),
+      catchError(error => {
+        console.error('Error al eliminar jugador:', error);
+        return throwError(() => new Error('No se pudo eliminar.'));
+      })
+    );
+  }
+
 }
+
+
 
 
 

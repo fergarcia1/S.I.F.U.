@@ -1,5 +1,42 @@
-<h1>Menú ADMIN</h1>
+<div class="admin-dashboard">
+  <header class="admin-header">
+    <h1>🛠️ Panel de Director Deportivo</h1>
+    <p>Administración de la Base de Datos</p>
+  </header>
 
-<button routerLink="/formAgregarJugador">Agregar Jugador</button>
-<button routerLink="/formAgregarJugador">Editar Jugador</button>
-<button routerLink="/">Eliminar Jugador</button>
+  <div class="menu-grid">
+    
+    <button class="menu-card card-create" routerLink="/formAgregarJugador">
+      <div class="icon">➕</div>
+      <div class="content">
+        <h3>Alta de Jugador</h3>
+        <span>Registrar nueva ficha</span>
+      </div>
+    </button>
+
+    <button class="menu-card card-edit" routerLink="/formAgregarJugador">
+      <div class="icon">✏️</div>
+      <div class="content">
+        <h3>Editar Datos</h3>
+        <span>Modificar atributos</span>
+      </div>
+    </button>
+
+    <button class="menu-card card-delete" routerLink="/">
+      <div class="icon">🗑️</div>
+      <div class="content">
+        <h3>Baja de Jugador</h3>
+        <span>Eliminar de la DB</span>
+      </div>
+    </button>
+
+    <button class="menu-card card-team" routerLink="/">
+      <div class="icon">🛡️</div>
+      <div class="content">
+        <h3>Crear Equipo</h3>
+        <span>Fundar nuevo club</span>
+      </div>
+    </button>
+
+  </div>
+</div>
