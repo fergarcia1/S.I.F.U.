@@ -51,29 +51,35 @@ export class GameStateService {
     }));
   }
 
-  updatePlayerStats(players: Player[], events: MatchEvent[]) {
-    players.forEach(player => {
-      player.stats.matches++;
-      if (player.isStarter) player.stats.starts++;
-    });
+updatePlayerStats(players: Player[], events: MatchEvent[]) {
+  // Partidos jugados y titularidad
+  players.forEach(player => {
+    player.stats.matches++;
+    if (player.isStarter) player.stats.starts++;
+  });
 
-    events.forEach(ev => {
-      const player = players.find(p => p.id === ev.playerId);
-      if (!player) return;
+  // Goles y asistencias segun eventos
+  events.forEach(ev => {
+    const player = players.find(p => p.id === ev.playerId);
+    if (!player) return;
 
-      switch (ev.type) {
-        case 'goal': player.stats.goals++; break;
-        case 'assist': player.stats.assists++; break;
-        case 'yellow': player.stats.yellowCards++; break;
-        case 'red': player.stats.redCards++; break;
-      }
+    switch (ev.type) {
+      case 'goal':
+        player.stats.goals++;
+        break;
+      // 🔴 IMPORTANTE: NO tocamos yellow ni red acá
+      // case 'yellow': player.stats.yellowCards++; break;
+      // case 'red': player.stats.redCards++; break;
+    }
 
-      if (ev.assistId) {
-        const assistPlayer = players.find(p => p.id === ev.assistId);
-        if (assistPlayer) assistPlayer.stats.assists++;
-      }
-    });
-  }
+    // Asistencias desde assistId del evento de gol
+    if (ev.assistId) {
+      const assistPlayer = players.find(p => p.id === ev.assistId);
+      if (assistPlayer) assistPlayer.stats.assists++;
+    }
+  });
+}
+
 
   // -----------------------------------------------------
   // RESULTADOS

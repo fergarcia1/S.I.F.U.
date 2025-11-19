@@ -38,7 +38,7 @@ export class PlantillaComponent {
   // mostrar errores de tactica
   errorMessage = signal<string | null>(null);
 
-  protected readonly cardState = new Map<number, { yellow: number; red: boolean }>();
+  
 
 
   //signals para formacion
