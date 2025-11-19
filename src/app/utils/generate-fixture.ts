@@ -8,7 +8,7 @@ export function generateFixture(teams: Teams[]) {
     throw new Error("La cantidad de equipos debe ser PAR");
   }
 
-  const rounds = totalTeams - 1;  
+  const rounds = totalTeams - 1;
   const matchesPerRound = totalTeams / 2;
 
   // Copiamos los equipos y dejamos fijo al primero
@@ -48,6 +48,16 @@ export function generateFixture(teams: Teams[]) {
     // Rotación (round robin)
     const last = rotating.pop()!;
     rotating.unshift(last);
+  }
+
+  // --- BALANCEAR LOCAL/VISITANTE EN IDA (alternancia) ---
+  for (const match of fixture) {
+    if (match.matchday % 2 === 0) {
+      // Invertir local/visitante en fechas pares
+      const temp = match.homeTeamId;
+      match.homeTeamId = match.awayTeamId;
+      match.awayTeamId = temp;
+    }
   }
 
   // ------------ VUELTA ------------

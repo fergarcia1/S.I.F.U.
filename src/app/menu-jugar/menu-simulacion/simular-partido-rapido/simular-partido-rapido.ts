@@ -3,33 +3,37 @@ import { GameStateService } from '../../game-state-service';
 import { Teams } from '../../../models/teams';
 import { MatchEvent } from '../../../models/match-event';
 import { simulateFullMatch } from '../../../utils/simulation';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SaveActualService } from '../../../saves/save-actual-service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-simular-partido-rapido',
+  imports: [],
   templateUrl: './simular-partido-rapido.html',
+  styleUrl: './simular-partido-rapido.css'
 })
 export class SimularPartidoRapido {
-
   events = signal<MatchEvent[]>([]);
   score = signal({ home: 0, away: 0 });
   protected readonly route = inject(ActivatedRoute);
+  private readonly saveActual = inject(SaveActualService);
+  private readonly router = inject(Router);
   protected readonly teamId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
-
+  private readonly location = inject(Location);
   match: any;
   homeTeam!: Teams;
   awayTeam!: Teams;
 
   constructor(private gameState: GameStateService) {
-    
     const selectedTeamId = this.gameState.selectedTeamId()!;
-    
+
     // 1. Obtener el partido del usuario
     this.match = this.getNextMatch(selectedTeamId);
 
     // Si no hay partido, cortamos
     if (!this.match) {
-      console.warn("No hay próximo partido para este equipo.");
+      console.warn('No hay próximo partido para este equipo.');
       return;
     }
 
@@ -41,26 +45,32 @@ export class SimularPartidoRapido {
     this.awayTeam = this.gameState.getTeamById(this.match.awayTeamId)!;
 
     // 4. Obtener el resultado que ya fue simulado en el paso anterior
-    const updatedMatch = this.gameState.fixture().find(m => m.id === this.match.id)!;
+    const updatedMatch = this.gameState.fixture().find((m) => m.id === this.match.id)!;
 
     this.events.set(updatedMatch.events);
     this.score.set({
       home: updatedMatch.homeGoals,
       away: updatedMatch.awayGoals,
     });
+
+        this.saveActual.autosave({
+      teams: this.gameState.teams(),
+      standings: this.gameState.standings(),
+      fixture: this.gameState.fixture(),
+      currentMatchday: this.match.matchday,
+    });
+    
   }
+
+  
 
   // 🔥 SIMULAR TODOS LOS PARTIDOS DE UNA JORNADA
   private simulateMatchday(matchday: number) {
+    const matches = this.gameState.fixture().filter((m) => m.matchday === matchday && !m.played);
 
-    const matches = this.gameState
-      .fixture()
-      .filter(m => m.matchday === matchday && !m.played);
-
-    console.log("Simulando fecha:", matchday, matches);
+    console.log('Simulando fecha:', matchday, matches);
 
     for (const match of matches) {
-
       const homeTeam = this.gameState.getTeamById(match.homeTeamId)!;
       const awayTeam = this.gameState.getTeamById(match.awayTeamId)!;
 
@@ -68,6 +78,7 @@ export class SimularPartidoRapido {
 
       this.gameState.updateMatchResult(match.id, result);
     }
+
   }
 
   getTeamById(teamId: number): Teams | undefined {
@@ -75,20 +86,18 @@ export class SimularPartidoRapido {
   }
 
   getPlayerName(team: Teams | undefined, playerId: number): string {
-    return (
-      team?.squad.find((p) => p.id === playerId)?.name ?? 'Desconocido'
-    );
+    return team?.squad.find((p) => p.id === playerId)?.name ?? 'Desconocido';
   }
 
   private getNextMatch(teamId: number) {
-    return (
-      this.gameState
-        .fixture()
-        .find(
-          (m) =>
-            !m.played &&
-            (m.homeTeamId === teamId || m.awayTeamId === teamId)
-        )!
-    );
+    return this.gameState
+      .fixture()
+      .find((m) => !m.played && (m.homeTeamId === teamId || m.awayTeamId === teamId))!;
+  }
+  goBack() {
+    this.location.back();
+  }
+  navigateToMenuInicio(id : number) {
+    this.router.navigateByUrl(`/inicio/${id}`);
   }
 }
