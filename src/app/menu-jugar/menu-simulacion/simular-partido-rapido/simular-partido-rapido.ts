@@ -6,11 +6,10 @@ import { simulateFullMatch } from '../../../utils/simulation';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SaveActualService } from '../../../saves/save-actual-service';
 import { Location } from '@angular/common';
-import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-simular-partido-rapido',
-  imports: [UpperCasePipe],
+  imports: [],
   templateUrl: './simular-partido-rapido.html',
   styleUrl: './simular-partido-rapido.css'
 })

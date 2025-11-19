@@ -124,7 +124,7 @@ export class SimularPartido {
   private getNextMatch(teamId: number) {
     return this.gameState
       .fixture()
-      .find((m) => !m.played && (m.homeTeamId === teamId || m.awayTeamId === teamId))!;
+      .find(m => !m.played && (m.homeTeamId === teamId || m.awayTeamId === teamId))!;
   }
   navigateToMenuInicio(id : number) {
     this.router.navigateByUrl(`/inicio/${id}`);

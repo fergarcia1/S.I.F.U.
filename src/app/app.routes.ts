@@ -59,16 +59,6 @@ export const routes: Routes = [
     component: SavesComponent,
   },
   {
-    path: 'dt',
-    canActivate: [AuthGuard],
-    component: Dt,
-  },
-  {
-    path: 'saves',
-    canActivate: [AuthGuard],
-    component: SavesComponent,
-  },
-  {
     path: 'inicio/:id',
     canActivate: [AuthGuard, PlayerGuard],
     component: InicioComponent
