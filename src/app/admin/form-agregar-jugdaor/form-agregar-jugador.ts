@@ -9,7 +9,7 @@ import { PlayerStats } from '../../models/player-stats';
 @Component({
   selector: 'app-form-agregar-jugdaor',
   imports: [ReactiveFormsModule],
-  templateUrl: './form-agregar-jugador.html',
+  templateUrl: './form-agregar-jugdaor.html',
   styleUrl: './form-agregar-jugador.css',
 })
 export class FormAgregarJugador {
