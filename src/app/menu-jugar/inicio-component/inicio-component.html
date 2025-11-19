@@ -6,17 +6,17 @@
   <div class="nav-links">
     <a [routerLink]="['/inicio', teamId]" class="active">Inicio</a>
     <a [routerLink]="['/plantilla', teamId]">Plantilla</a>
-        <a [routerLink]="['/fixture', teamId]">Fixture</a>
-        <a [routerLink]="['/tabla', teamId]">Tabla</a>
+    <a [routerLink]="['/fixture', teamId]">Fixture</a>
+    <a [routerLink]="['/tabla', teamId]">Tabla</a>
 
-        <a [routerLink]="['/estadisticasEquipo', teamId]">Estadísticas Equipo</a>
+    <a [routerLink]="['/estadisticasEquipo', teamId]">Estadísticas Equipo</a>
 
-        <a [routerLink]="['/estadisticasTorneo', teamId]">Estadísticas Torneo</a>
-    </div>
+    <a [routerLink]="['/estadisticasTorneo', teamId]">Estadísticas Torneo</a>
+  </div>
 
   <div class="nav-spacer"></div>
 
-    <button class="nav-btn logout-btn" (click)="logout()">
+  <button class="nav-btn logout-btn" (click)="logout()">
     Cerrar Sesión
   </button>
 </nav>
@@ -24,27 +24,70 @@
 <div class="dashboard-container">
 
   <div class="content-wrapper">
-    
+
     <header class="dashboard-header">
       <h1>Centro de Gestión</h1>
       <p>Temporada 2024/2025</p>
     </header>
 
     <div class="game-menu">
-      
-      <div class="menu-option highlight" (click)="navigateToMenuSimulacion(teamId)">
+
+      @if (nextMatch() && nextMatchStandingInfo()) {
+
+      <div class="standings-box-container">
+
+        <!-- TU EQUIPO -->
+        <div class="stand-box my-team">
+          <h3>Tu Equipo</h3>
+          <p class="team-name">{{ myTeamName() }}</p>
+
+          <div class="position-tag">
+            {{ nextMatchStandingInfo()?.myPos }}°
+            <span>posición</span>
+          </div>
+        </div>
+
+        <!-- RIVAL -->
+        <div class="stand-box rival-team">
+          <h3>Rival</h3>
+          <p class="team-name">{{ nextMatch()?.rivalTeamName }}</p>
+
+          <div class="position-tag">
+            {{ nextMatchStandingInfo()?.rivalPos }}°
+            <span>posición</span>
+          </div>
+        </div>
+
+      </div>
+
+      }
+
+
+      <div class="menu-option highlight" (click)="navigateToMenuSimulacion(teamId!)">
         <div class="option-content">
-          <h2 >CONTINUAR</h2>
-          <span>Próximo partido vs. </span>
+          <h2>CONTINUAR</h2>
+
+          @if (nextMatch()) {
+          <span>
+            Jornada {{ nextMatch()?.matchday }} -
+            vs. {{ nextMatch()?.rivalTeamName }}
+            ({{ nextMatch()?.isHome ? 'Local' : 'Visitante' }})
+          </span>
+          }
+          @else {
+          <span>No hay próximos partidos</span>
+          }
+
         </div>
         <div class="icon">⚽</div>
       </div>
-      <div class="menu-option highlight">
+
+      <div class="menu-option highlight" (click)="navigateToMenuPrincipal()">
         <div class="option-content">
-          <h2 >Opciones </h2>
+          <h2>SALIR AL MENU PRINCIPAL </h2>
           <span> </span>
         </div>
-        <div class="icon">🛠️</div>
-    </div>
+        <div class="icon">🔙</div>
+      </div>
 
-  </div>
+    </div>
