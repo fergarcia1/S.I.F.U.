@@ -40,6 +40,13 @@ const CARD_RED_BY_POS = {
   FW: 0.0003
 };
 
+const SECOND_YELLOW_BY_POS = {
+  GK: 0.01,
+  DF: 0.06,
+  MF: 0.05,
+  FW: 0.03,
+};
+
 /** ELEGIR JUGADOR */
 function pickStarterByWeight(team: Teams, weightFunc: (p: Player) => number) {
   const starters = team.squad.filter(p => p.isStarter && !isPlayerOut(p.id!));
@@ -149,7 +156,7 @@ function tryGenerateCard(team: Teams, minute: number) {
   }
 
   // Segunda amarilla (solo si ya tenía 1)
-  if (state.yellow === 1 && randomChance(0.10)) {
+  if (state.yellow === 1 && randomChance(SECOND_YELLOW_BY_POS[player.position as keyof typeof SECOND_YELLOW_BY_POS])) {
     return { player, type: "yellow" as const };
   }
 
