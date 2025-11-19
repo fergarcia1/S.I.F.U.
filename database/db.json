@@ -1,5 +1,61 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "1234",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "pepe",
+      "password": "1234",
+      "role": "player"
+    },
+    {
+      "id": "1763411642156",
+      "username": "test",
+      "password": "1234",
+      "role": "player"
+    },
+    {
+      "id": "1763412279366",
+      "username": "aDN",
+      "password": "1234a$",
+      "role": "player"
+    },
+    {
+      "id": "1763433903731",
+      "username": "toca",
+      "password": "!12345",
+      "role": "player"
+    },
+    {
+      "id": "1763520159564",
+      "username": "pepito",
+      "password": "123456!",
+      "role": "player"
+    }
+  ],
+  "managers": [
+    {
+      "id": 1763527947632,
+      "userId": "2",
+      "name": "Guardiola",
+      "nationality": "Peruano",
+      "age": 40,
+      "playStyle": "Possession"
+    },
+    {
+      "id": 1763528001130,
+      "userId": "1763520159564",
+      "name": "Messi",
+      "nationality": "Argentino",
+      "age": 25,
+      "playStyle": "Attacking"
+    }
+  ],
+  "saves": [],
   "teams": [
     {
       "id": 1,
@@ -5799,6 +5855,5 @@
         }
       ]
     }
-  ],
-  "saves": []
+  ]
 }
