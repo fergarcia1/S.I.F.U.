@@ -1,3 +1,4 @@
+import { Saves } from './models/saves';
 import { Routes } from '@angular/router';
 import { TeamsSelectionComponent } from './equipos/teams-selection-component/teams-selection-component';
 import { PlantelComponent } from './equipos/plantel-component/plantel-component';
@@ -17,6 +18,7 @@ import { SimularPartidoRapido } from './menu-jugar/menu-simulacion/simular-parti
 import { EstadisticasEquipo } from './menu-jugar/estadisticas-equipo/estadisticas-equipo';
 import { EstadisticasTorneo } from './menu-jugar/estadisticas-torneo/estadisticas-torneo';
 import { Dt } from './dt/dt';
+import { SavesComponent } from './saves/saves';
 
 export const routes: Routes = [
   {
@@ -44,6 +46,11 @@ export const routes: Routes = [
     path: 'dt',
     canActivate: [AuthGuard],
     component: Dt,
+  },
+  {
+    path: 'saves',
+    canActivate: [AuthGuard],
+    component: SavesComponent,
   },
   {
     path: 'inicio/:id',
