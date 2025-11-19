@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
 import { Teams } from '../../models/teams';
 import { Player } from '../../models/player';
+import { GameStateService } from '../game-state-service';
 
 const VALID_FORMATIONS = [
   '3-4-3', '3-5-2',
@@ -22,6 +23,7 @@ export class PlantillaComponent {
   private readonly service = inject(TeamsService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly gameState = inject(GameStateService);
 
   //id del equipo seleccionado
   protected readonly teamId = Number(this.route.snapshot.paramMap.get('id'));
@@ -99,6 +101,7 @@ export class PlantillaComponent {
       this.service.updateTeam(equipoActualizado).subscribe({
         next: () => {
           console.log('Cambio guardado exitosamente en BDD');
+          this.gameState.updateTeam(equipoActualizado!);
         },
         error: (err) => {
           console.error('Error al guardar cambios', err);

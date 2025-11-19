@@ -1,9 +1,10 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { Teams } from '../models/teams';
 import { Match } from '../models/match';
 import { LeagueStanding } from '../models/league-standing';
 import { MatchEvent } from '../models/match-event';
 import { Player } from '../models/player';
+import { TeamsService } from '../equipos/teams-service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class GameStateService {
   readonly teams = signal<Teams[]>([]);
   readonly fixture = signal<Match[]>([]);
   readonly standings = signal<LeagueStanding[]>([]);
+  private readonly teamsService = inject(TeamsService);
+
 
   // --- Helper: equipo seleccionado ---
   readonly selectedTeam = computed(() =>
@@ -204,6 +207,7 @@ updatePlayerStats(players: Player[], events: MatchEvent[]) {
 
   this.teams.set(newTeams);
 }
+  
 
 
   

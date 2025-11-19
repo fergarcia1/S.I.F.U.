@@ -9,7 +9,7 @@ import { Teams } from '../../models/teams';
 
 @Component({
   selector: 'app-menu-simulacion',
-  imports: [CommonModule, PlantillaComponent],
+  imports: [CommonModule],
   templateUrl: './menu-simulacion.html',
   styleUrl: './menu-simulacion.css',
 })
