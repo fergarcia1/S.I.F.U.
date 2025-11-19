@@ -97,3 +97,13 @@
 .card-team:hover {
   border-bottom: 4px solid #f1c40f; /* Amarillo */
 }
+
+/* Estilo para la tarjeta de Gestión (Violeta / Database) */
+.card-manage:hover {
+  border-bottom: 4px solid #9b59b6; /* Violeta */
+}
+
+/* Estilo para la tarjeta de Reset (Naranja / Alerta) */
+.card-reset:hover {
+  border-bottom: 4px solid #e67e22; /* Naranja */
+}

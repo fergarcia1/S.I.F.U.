@@ -8,5 +8,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './menu-admin.css',
 })
 export class MenuAdmin {
-  
+  alertaFutura() {
+    alert("Funcionalidad 'Resetear Temporada' próximamente...");
+  }
 }

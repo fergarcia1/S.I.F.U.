@@ -57,7 +57,7 @@ export class TeamsService {
       switchMap((team) => {
         // Filtramos el squad para quitar al jugador con ese ID
         const updatedSquad = team.squad.filter(p => p.id !== playerId);
-        
+
 
         // Actualizamos el objeto team
         team.squad = updatedSquad;
@@ -72,12 +72,35 @@ export class TeamsService {
     );
   }
 
+  updatePlayer(teamId: number, updatedPlayer: Player): Observable<Teams> {
+    const teamUrl = `${this.url}/${teamId}`;
+
+    return this.http.get<Teams>(teamUrl).pipe(
+      switchMap((team) => {
+        // 1. Buscamos el índice del jugador en el array
+        const index = team.squad.findIndex(p => p.id === updatedPlayer.id);
+
+        if (index !== -1) {
+          // 2. Reemplazamos el jugador viejo por el nuevo
+          team.squad[index] = updatedPlayer;
+          // 3. Guardamos el equipo actualizado
+          return this.http.put<Teams>(teamUrl, team);
+        } else {
+          return throwError(() => new Error('Jugador no encontrado en este equipo'));
+        }
+      }),
+      catchError(error => {
+        console.error('Error al actualizar jugador:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+
+
+
 }
 
 
 
 
-
-// .pipe(
-//         map(team => team.squad ?? [])
-//       )

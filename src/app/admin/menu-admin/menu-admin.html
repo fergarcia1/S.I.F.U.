@@ -1,6 +1,6 @@
 <div class="admin-dashboard">
   <header class="admin-header">
-    <h1>🛠️ Panel de Director Deportivo</h1>
+    <h1>🛠️ Panel de Administrador</h1>
     <p>Administración de la Base de Datos</p>
   </header>
 
@@ -14,27 +14,18 @@
       </div>
     </button>
 
-    <button class="menu-card card-edit" routerLink="/formAgregarJugador">
-      <div class="icon">✏️</div>
-      <div class="content">
-        <h3>Editar Datos</h3>
-        <span>Modificar atributos</span>
+    <button class="menu-card card-manage" routerLink="/menuAdmin/db">
+      <div class="icon">📂</div> <div class="content">
+        <h3>Base de Datos Global</h3>
+        <span>Buscar, Editar y Eliminar</span>
       </div>
     </button>
 
-    <button class="menu-card card-delete" routerLink="/">
-      <div class="icon">🗑️</div>
+    <button class="menu-card card-reset" (click)="alertaFutura()">
+      <div class="icon">⚠️</div>
       <div class="content">
-        <h3>Baja de Jugador</h3>
-        <span>Eliminar de la DB</span>
-      </div>
-    </button>
-
-    <button class="menu-card card-team" routerLink="/">
-      <div class="icon">🛡️</div>
-      <div class="content">
-        <h3>Crear Equipo</h3>
-        <span>Fundar nuevo club</span>
+        <h3>Resetear Temporada</h3>
+        <span>Restaurar valores iniciales</span>
       </div>
     </button>
 
