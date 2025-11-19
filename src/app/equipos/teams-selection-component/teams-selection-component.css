@@ -78,7 +78,6 @@ button {
     border: 1px solid #1e392a;
     color: #1e392a;
 }
-
 button:hover {
     opacity: 0.9;
 }
