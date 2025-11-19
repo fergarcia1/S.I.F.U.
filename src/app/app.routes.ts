@@ -11,6 +11,7 @@ import { PlantillaComponent } from './menu-jugar/plantilla-component/plantilla-c
 import { FormAgregarJugador } from './admin/form-agregar-jugdaor/form-agregar-jugador';
 import { MenuAdmin } from './admin/menu-admin/menu-admin';
 import { TablaComponent } from './menu-jugar/tabla-component/tabla-component';
+import { LoginGuard } from './guards/login-guard';
 import { ManageDB } from './admin/manage-db/manage-db';
 
 
@@ -25,12 +26,14 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     component: PlantelComponent
   },
-
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', 
+    component: RegisterComponent,
+    canActivate: [LoginGuard]},
   {
     path: 'menu',
     canActivate: [AuthGuard],
@@ -40,7 +43,6 @@ export const routes: Routes = [
     path: 'inicio/:id',
     canActivate: [AuthGuard],
     component: InicioComponent
-
   },
   {
     path: 'fixture/:id', 

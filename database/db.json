@@ -61,7 +61,7 @@
           "position": "DF",
           "rating": 85,
           "shirtNumber": 2,
-          "isStarter": true,
+          "isStarter": false,
           "stats": {
             "goals": 0,
             "assists": 0,
@@ -253,7 +253,7 @@
           "position": "MF",
           "rating": 80,
           "shirtNumber": 27,
-          "isStarter": false,
+          "isStarter": true,
           "stats": {
             "goals": 0,
             "assists": 0,
@@ -1645,7 +1645,7 @@
           "position": "GK",
           "rating": 83,
           "shirtNumber": 22,
-          "isStarter": true,
+          "isStarter": false,
           "stats": {
             "goals": 0,
             "assists": 0,
@@ -1725,7 +1725,7 @@
           "position": "MF",
           "rating": 86,
           "shirtNumber": 39,
-          "isStarter": true,
+          "isStarter": false,
           "stats": {
             "goals": 0,
             "assists": 0,
@@ -1853,7 +1853,7 @@
           "position": "MF",
           "rating": 76,
           "shirtNumber": 67,
-          "isStarter": false,
+          "isStarter": true,
           "stats": {
             "goals": 0,
             "assists": 0,
@@ -1885,7 +1885,7 @@
           "position": "GK",
           "rating": 78,
           "shirtNumber": 1,
-          "isStarter": false,
+          "isStarter": true,
           "stats": {
             "goals": 0,
             "assists": 0,

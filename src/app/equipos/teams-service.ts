@@ -98,8 +98,13 @@ export class TeamsService {
 
 
 
-
+  updateTeam(team: Teams) {
+    // Enviamos el equipo modificado a la URL: localhost:3000/teams/ID
+    return this.http.put<Teams>(`${this.url}/${team.id}`, team);
+  }
 }
+
+
 
 
 
