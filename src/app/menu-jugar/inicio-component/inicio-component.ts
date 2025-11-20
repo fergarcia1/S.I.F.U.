@@ -19,6 +19,7 @@ export class InicioComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly auth = inject(AuthService);
   private readonly location = inject(Location);
+
   private readonly gameState = inject(GameStateService);
 
 
@@ -30,6 +31,7 @@ export class InicioComponent {
 
   constructor() {
 
+  
   }
 
 
