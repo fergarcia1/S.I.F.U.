@@ -12,4 +12,5 @@ export interface Saves {
   fixture: Match[]; // ACÁ SE GUARDAN TODOS LOS PARTIDOS
   createdAt: string;
   updatedAt: string;
+  nameSave: string;
 }

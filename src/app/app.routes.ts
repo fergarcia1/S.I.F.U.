@@ -21,8 +21,6 @@ import { LoginGuard } from './guards/login-guard';
 import { ManageDB } from './admin/manage-db/manage-db';
 import { PlayerGuard } from './guards/player-guard';
 import { AdminGuard } from './guards/admin-guard';
-import { Dt } from './dt/dt';
-import { SavesComponent } from './saves/saves';
 
 export const routes: Routes = [
   {
@@ -47,16 +45,6 @@ export const routes: Routes = [
     path: 'menu',
     canActivate: [AuthGuard, PlayerGuard],
     component: MenuComponent
-  },
-  {
-    path: 'dt',
-    canActivate: [AuthGuard],
-    component: Dt,
-  },
-  {
-    path: 'saves',
-    canActivate: [AuthGuard],
-    component: SavesComponent,
   },
   {
     path: 'inicio/:id',

@@ -4,7 +4,6 @@ import { Teams } from '../../../models/teams';
 import { MatchEvent } from '../../../models/match-event';
 import { simulateFullMatch } from '../../../utils/simulation';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SaveActualService } from '../../../saves/save-actual-service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -17,7 +16,6 @@ export class SimularPartidoRapido {
   events = signal<MatchEvent[]>([]);
   score = signal({ home: 0, away: 0 });
   protected readonly route = inject(ActivatedRoute);
-  private readonly saveActual = inject(SaveActualService);
   private readonly router = inject(Router);
   protected readonly teamId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
   private readonly location = inject(Location);
@@ -53,12 +51,6 @@ export class SimularPartidoRapido {
       away: updatedMatch.awayGoals,
     });
 
-        this.saveActual.autosave({
-      teams: this.gameState.teams(),
-      standings: this.gameState.standings(),
-      fixture: this.gameState.fixture(),
-      currentMatchday: this.match.matchday,
-    });
     
   }
 

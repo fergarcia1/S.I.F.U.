@@ -4,7 +4,6 @@ import { Teams } from '../../../models/teams';
 import { MatchEvent } from '../../../models/match-event';
 import { simulateFullMatch } from '../../../utils/simulation';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SaveActualService } from '../../../saves/save-actual-service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -19,7 +18,6 @@ export class SimularPartido {
   currentMinute = signal(0);
 
   protected readonly route = inject(ActivatedRoute);
-  private readonly saveActual = inject(SaveActualService);
   protected readonly teamId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
   
   private readonly router = inject(Router);
@@ -57,12 +55,7 @@ export class SimularPartido {
     // 6. Iniciar animación del partido
     this.startRealTimeSimulation();
 
-        this.saveActual.autosave({
-      teams: this.gameState.teams(),
-      standings: this.gameState.standings(),
-      fixture: this.gameState.fixture(),
-      currentMatchday: this.match.matchday,
-    });
+
   }
 
   // 🎬 Simula minuto a minuto

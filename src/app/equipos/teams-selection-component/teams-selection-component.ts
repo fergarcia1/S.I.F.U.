@@ -7,8 +7,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GameStateService } from '../../menu-jugar/game-state-service';
 import { generateFixture } from '../../utils/generate-fixture';
-import { Saves } from '../../models/saves';
-import { SaveService } from '../../saves/save-service';
 import { AuthService } from '../../auth/auth-service';
 
 
@@ -25,7 +23,6 @@ export class TeamsSelectionComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly teamId = Number(this.route.snapshot.paramMap.get('id'));
   private readonly gameState = inject(GameStateService);
-  private readonly saveService = inject(SaveService);
   private readonly auth = inject(AuthService);
 
 
@@ -62,7 +59,7 @@ export class TeamsSelectionComponent {
 
     const now = new Date().toISOString();
 
-     const newSave: Saves = {
+    const newSave = {
       id: Date.now(),
       userId: this.auth.getUser()!.id,
       teamId: id,
@@ -76,14 +73,9 @@ export class TeamsSelectionComponent {
       updatedAt: now,
     };
 
-    // Guardar partida en JSON-server
-    this.saveService.create(newSave).subscribe(() => {
-      // lo agregamos al signal
-      this.saveService.saves.update(s => [...s, newSave]);
-
       // Navegar al menú del DT
       this.router.navigateByUrl(`/inicio/${id}`);
-    });
+  
   }
 
   navigateToPlantel(id: number) {
@@ -96,7 +88,7 @@ export class TeamsSelectionComponent {
 
   handleMissingImage(event: Event) {
     const imgElement = event.target as HTMLImageElement;
-    imgElement.src = '/logos/default.png'; 
+    imgElement.src = '/logos/default.png';
   }
 }
 
