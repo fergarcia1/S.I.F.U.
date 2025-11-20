@@ -21,8 +21,8 @@ import { LoginGuard } from './guards/login-guard';
 import { ManageDB } from './admin/manage-db/manage-db';
 import { PlayerGuard } from './guards/player-guard';
 import { AdminGuard } from './guards/admin-guard';
-import { Dt } from './dt/dt';
-import { SavesComponent } from './saves/saves';
+import { ListaPartidasGuardadas } from './lista-partidas-guardadas/lista-partidas-guardadas';
+
 
 export const routes: Routes = [
   {
@@ -40,23 +40,15 @@ export const routes: Routes = [
     component: LoginComponent,
     canActivate: [LoginGuard]
   },
-  { path: 'register', 
+  {
+    path: 'register',
     component: RegisterComponent,
-    canActivate: [LoginGuard]},
+    canActivate: [LoginGuard]
+  },
   {
     path: 'menu',
     canActivate: [AuthGuard, PlayerGuard],
     component: MenuComponent
-  },
-  {
-    path: 'dt',
-    canActivate: [AuthGuard],
-    component: Dt,
-  },
-  {
-    path: 'saves',
-    canActivate: [AuthGuard],
-    component: SavesComponent,
   },
   {
     path: 'inicio/:id',
@@ -64,7 +56,7 @@ export const routes: Routes = [
     component: InicioComponent
   },
   {
-    path: 'fixture/:id', 
+    path: 'fixture/:id',
     canActivate: [AuthGuard, PlayerGuard],
     component: FixtureComponent
   },
@@ -73,23 +65,28 @@ export const routes: Routes = [
     canActivate: [AuthGuard, PlayerGuard],
     component: PlantillaComponent
   },
-  {path: 'menuAdmin',
+  {
+    path: 'menuAdmin',
     canActivate: [AuthGuard, AdminGuard],
     component: MenuAdmin
   },
-  {path: 'formAgregarJugador',
+  {
+    path: 'formAgregarJugador',
     canActivate: [AuthGuard, AdminGuard],
     component: FormAgregarJugador
   },
-  {path: 'formAgregarJugador/:teamId/:playerId',
+  {
+    path: 'formAgregarJugador/:teamId/:playerId',
     canActivate: [AuthGuard, AdminGuard],
     component: FormAgregarJugador
   },//Editar
-  { path: 'menuAdmin/db', 
+  {
+    path: 'menuAdmin/db',
     canActivate: [AuthGuard, AdminGuard],
     component: ManageDB
   },
-  { path: 'admin/editar/:teamId/:playerId', 
+  {
+    path: 'admin/editar/:teamId/:playerId',
     canActivate: [AuthGuard, AdminGuard],
     component: FormAgregarJugador
   },
@@ -123,6 +120,12 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     component: EstadisticasTorneo
   },
+  {
+    path: 'listaPartidasGuardadas',
+    canActivate: [AuthGuard],
+    component: ListaPartidasGuardadas
+  },
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];

@@ -1,18 +1,23 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../auth/auth-service';
 import { Router, RouterLink } from '@angular/router';
 import { Users } from '../models/users';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './menu-principal.component.html',
   styleUrls: ['./menu-principal.component.css']
 })
 export class MenuComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
+
+  isModalOpen = signal(false);
+  newSaveName = signal('');
 
   user: Users | null = null;
 
@@ -25,4 +30,29 @@ export class MenuComponent {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
+
+  openNewGameModal() {
+    this.isModalOpen.set(true);
+    this.newSaveName.set(`Partida de ${this.user?.username || 'Usuario'}`); // Nombre por defecto
+  }
+
+  // 2. Cierra el modal
+  closeModal() {
+    this.isModalOpen.set(false);
+  }
+
+  // 3. Confirma y navega a la selección de equipo
+  continueToTeamSelection() {
+    if (!this.newSaveName().trim()) {
+      alert('Por favor escribe un nombre para la partida');
+      return;
+    }
+
+    // Navegamos a la lista de equipos, pero pasamos el nombre como parámetro
+    this.router.navigate(['/listaTeams'], {
+      queryParams: { saveName: this.newSaveName() }
+    });
+  }
+
+
 }

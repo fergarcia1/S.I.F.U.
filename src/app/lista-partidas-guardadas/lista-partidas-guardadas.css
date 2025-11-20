@@ -1,0 +1,146 @@
+/* Contenedor Principal */
+.saves-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f7f4; /* Texto claro por si el fondo body es oscuro */
+}
+
+/* Encabezado */
+.saves-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #cddc39; /* Línea Lima */
+  padding-bottom: 1rem;
+}
+
+.saves-header h1 {
+  color: #f0f7f4; /* Blanco/Claro */
+  margin: 0;
+  font-size: 2rem;
+}
+
+.btn-back {
+  color: #cddc39; /* Lima */
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #cddc39;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.btn-back:hover {
+  background-color: #cddc39;
+  color: #1e392a; /* Verde oscuro */
+}
+
+/* Grilla de Partidas */
+.saves-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* TARJETA DE PARTIDA (Estilo Menú Principal) */
+.save-card {
+  background-color: #f0f7f4; /* Fondo Verde muy claro */
+  color: #1e392a; /* Texto Verde Oscuro */
+  border: 2px solid #cddc39; /* Borde Lima */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.save-card:hover {
+  transform: translateY(-5px);
+  border-color: #38a169; /* Verde más fuerte al hover */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Cabecera de la tarjeta */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 1rem;
+}
+
+.mini-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.save-info h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1e392a;
+  font-weight: 800;
+}
+
+.team-name {
+  margin: 5px 0 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Fechas */
+.card-dates {
+  background-color: rgba(205, 220, 57, 0.2); /* Fondo lima muy suave */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.card-dates p {
+  margin: 3px 0;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+/* Botón Continuar */
+.btn-continue {
+  width: 100%;
+  padding: 12px;
+  background-color: #38a169; /* Verde botón */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.btn-continue:hover {
+  background-color: #2f855a; /* Verde más oscuro */
+}
+
+/* Estado vacío */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: #ccc;
+}
+
+.btn-new {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #cddc39;
+  color: #1e392a;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
