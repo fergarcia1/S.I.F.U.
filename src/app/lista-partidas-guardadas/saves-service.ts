@@ -35,4 +35,9 @@ export class SavesService {
     // json-server filtra automáticamente con query params
     return this.http.get<Saves[]>(`${this.url}?userId=${userId}`);
   }
+
+  deleteSave(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
+
 }

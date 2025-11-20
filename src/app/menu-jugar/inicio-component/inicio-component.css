@@ -317,3 +317,31 @@
   color: white;
   letter-spacing: 1px;
 }
+
+/* === OPCIÓN DESTACADA (SIMULAR TODA LA TEMPORADA) === */
+.menu-option.auto-sim {
+  background: rgba(205, 220, 57, 0.15); /* igual a highlight */
+  border-left: 5px solid #cddc39;       /* igual a highlight */
+}
+
+.menu-option.auto-sim h2 {
+  color: #cddc39; /* igual a highlight */
+}
+
+.menu-option.auto-sim:hover {
+  background: #cddc39; /* igual a highlight */
+}
+
+.menu-option.auto-sim:hover h2 {
+  color: #15291f; /* igual a highlight */
+}
+
+.menu-option.auto-sim:hover span {
+  color: #15291f; /* igual a highlight */
+}
+
+.menu-option.auto-sim.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}

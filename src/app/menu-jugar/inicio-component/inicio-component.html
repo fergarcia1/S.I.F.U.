@@ -76,7 +76,8 @@
 
 
 
-      <div class="menu-option highlight" [class.disabled]="isSeasonFinished()" (click)="!isSeasonFinished() && navigateToMenuSimulacion(teamId!)">
+      <div class="menu-option highlight" [class.disabled]="isSeasonFinished()"
+        (click)="!isSeasonFinished() && navigateToMenuSimulacion(teamId!)">
         <div class="option-content">
           <h2>CONTINUAR</h2>
 
@@ -94,6 +95,16 @@
         </div>
         <div class="icon">⚽</div>
       </div>
+
+      <!-- BOTÓN: SIMULAR TODA LA TEMPORADA -->
+      <div class="menu-option auto-sim" (click)="simulateFullSeason()" [class.disabled]="isSeasonFinished()">
+        <div class="option-content">
+          <h2>SIMULAR TODA LA TEMPORADA</h2>
+          <span>Simula automáticamente todos los partidos restantes</span>
+        </div>
+        <div class="icon">⏩</div>
+      </div>
+
 
       <div class="menu-option highlight" (click)="navigateToMenuPrincipal()">
         <div class="option-content">

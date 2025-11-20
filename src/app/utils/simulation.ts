@@ -20,10 +20,10 @@ const GOAL_PROB_BY_POS = {
 };
 
 const ASSIST_PROB_BY_POS = {
+  GK: 0,
   DF: 0.02,
   MF: 0.06,
-  FW: 0.08,
-  GK: 0
+  FW: 0.08
 };
 
 const CARD_YELLOW_BY_POS = {

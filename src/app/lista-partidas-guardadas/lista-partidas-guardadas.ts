@@ -77,4 +77,23 @@ private savesService = inject(SavesService);
   continuarPartida(save: Saves) {
     this.router.navigate(['/inicio', save.teamId]);
   }
+
+  eliminarPartida(save: Saves) {
+  const confirmacion = confirm(`¿Seguro que deseas eliminar la partida "${save.nameSave}"?`);
+
+  if (!confirmacion) return;
+
+  this.savesService.deleteSave(save.id).subscribe({
+    next: () => {
+      // quitar la partida eliminada del signal
+      this.saves.update(lista => lista.filter(s => s.id !== save.id));
+      console.log("Partida eliminada correctamente:", save.id);
+    },
+    error: (err) => {
+      console.error("Error al eliminar partida", err);
+      alert("Hubo un error al eliminar la partida.");
+    }
+  });
+}
+
 }

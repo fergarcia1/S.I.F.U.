@@ -4,6 +4,7 @@ import { TeamsService } from '../../equipos/teams-service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth/auth-service';
 import { GameStateService } from '../game-state-service';
+import { simulateFullMatch } from '../../utils/simulation';
 
 
 @Component({
@@ -154,4 +155,28 @@ export class InicioComponent {
     const imgElement = event.target as HTMLImageElement;
     imgElement.src = '/logos/default.png'; 
   }
+
+  simulateFullSeason() {
+  const fixture = this.gameState.fixture();
+
+  // iterar por los partidos NO jugados
+  for (const match of fixture) {
+    if (!match.played) {
+      const home = this.gameState.getTeamById(match.homeTeamId);
+      const away = this.gameState.getTeamById(match.awayTeamId);
+
+      if (!home || !away) continue;
+
+      // IMPORTANTE: usar tu simulador real
+      const result = simulateFullMatch(match, home, away);
+
+      // actualizar estado global
+      this.gameState.updateMatchResult(match.id, result);
+    }
+  }
+
+  // temporada terminada → recalcular tabla automáticamente
+  console.log("TEMPORADA COMPLETA SIMULADA ✔");
+}
+
 }

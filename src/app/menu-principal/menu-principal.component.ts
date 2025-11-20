@@ -33,7 +33,6 @@ export class MenuComponent {
 
   openNewGameModal() {
     this.isModalOpen.set(true);
-    this.newSaveName.set(`Partida de ${this.user?.username || 'Usuario'}`); // Nombre por defecto
   }
 
   // 2. Cierra el modal

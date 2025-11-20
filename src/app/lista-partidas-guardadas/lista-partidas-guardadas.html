@@ -1,45 +1,48 @@
 <div class="saves-container">
-  
+
   <header class="saves-header">
     <h1>📂 Mis Partidas Guardadas</h1>
     <a routerLink="/" class="btn-back">Volver al Menú</a>
   </header>
 
   @if (isLoading()) {
-    <div class="loading-msg">
-      <p>Cargando historial de partidas...</p>
-    </div>
+  <div class="loading-msg">
+    <p>Cargando historial de partidas...</p>
+  </div>
   } @else {
-    
-    <div class="saves-grid">
-      @for (save of saves(); track save.id) {
-        <div class="save-card">
-          
-          <div class="card-header">
-            <img [src]="getTeamLogo(save.teamId)" alt="Logo" class="mini-logo">
-            <div class="save-info">
-              <h2>{{ save.nameSave }}</h2>
-              <p class="team-name">DT de: <strong>{{ getTeamName(save.teamId) }}</strong></p>
-            </div>
-          </div>
 
-          <div class="card-dates">
-            <p><small>Creada: {{ save.createdAt | date:'shortDate' }}</small></p>
-            <p><small>Última vez: {{ save.updatedAt | date:'short' }}</small></p>
-          </div>
+  <div class="saves-grid">
+    @for (save of saves(); track save.id) {
+    <div class="save-card">
 
-          <button class="btn-continue" (click)="continuarPartida(save)">
-            ▶ CONTINUAR PARTIDA
-          </button>
-          
+      <div class="card-header">
+        <img [src]="getTeamLogo(save.teamId)" alt="Logo" class="mini-logo">
+        <div class="save-info">
+          <h2>{{ save.nameSave }}</h2>
+          <p class="team-name">DT de: <strong>{{ getTeamName(save.teamId) }}</strong></p>
         </div>
-      } @empty {
-        <div class="empty-state">
-          <p>No tienes partidas guardadas.</p>
-          <a routerLink="/listaTeams" class="btn-new">Crear Nueva Partida</a>
-        </div>
-      }
+      </div>
+
+      <div class="card-dates">
+        <p><small>Creada: {{ save.createdAt | date:'shortDate' }}</small></p>
+        <p><small>Última vez: {{ save.updatedAt | date:'short' }}</small></p>
+      </div>
+
+      <button class="btn-continue" (click)="continuarPartida(save)">
+        ▶ CONTINUAR PARTIDA
+      </button>
+      <button class="btn-delete" (click)="eliminarPartida(save)">
+        🗑 Eliminar
+      </button>
+
+
     </div>
+    } @empty {
+    <div class="empty-state">
+      <p>No tienes partidas guardadas.</p>
+    </div>
+    }
+  </div>
 
   }
 </div>
